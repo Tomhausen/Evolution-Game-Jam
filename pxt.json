@@ -11,7 +11,12 @@
         "assets.json",
         "main.py",
         "tilemap.g.jres",
-        "tilemap.g.ts"
+        "tilemap.g.ts",
+        "tsfiles/basesprite.ts",
+        "tsfiles/playersprite.ts",
+        "images.g.jres",
+        "images.g.ts",
+        "tsfiles/gamemanager.ts"
     ],
     "testFiles": [
         "test.ts"
