@@ -11,6 +11,12 @@ class PlayerSprite extends BaseSprite{
     private isAttacking = false;
     private isWalking = false;
     private direction = Directions.DOWN;
+    private attackAnimDict = { 
+        0: assets.animation`heroUpAttack`,
+        1: assets.animation`heroDownAttack`,
+        2: assets.animation`heroLeftAttack`,
+        3: assets.animation`heroRightAttack`,
+    }
     
     constructor(){
         super(sprites.castle.heroWalkFront1, SpriteKind.Player);
@@ -18,12 +24,18 @@ class PlayerSprite extends BaseSprite{
     }
 
     private initialiseControls(){
-        controller.A.onEvent(ControllerButtonEvent.Pressed, function attack() {
+        this.attack();
+    }
+
+    private attack(){
+        controller.A.onEvent(ControllerButtonEvent.Pressed, function(): void {
+            let anim: Image[];
+            anim = this.attackAnimDict[this.direction];
             let frameLen = 100
-            let attackLen = assets.animation`heroFrontAttack`.length
-            animation.runImageAnimation(this.sprite, assets.animation`heroFrontAttack`, frameLen, false);
+            let attackLen = anim.length
+            animation.runImageAnimation(this.sprite, anim, frameLen, false);
             this.isAttacking = true;
-            timer.after(frameLen * attackLen, function stopAttacking(){this.isAttacking = false})
+            timer.after(frameLen * attackLen, function () { this.isAttacking = false })
         })
     }
 }
