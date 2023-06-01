@@ -7,7 +7,7 @@ enum Directions {
 
 class PlayerSprite extends BaseSprite{
 
-    private speed = 100;
+    private speed = 75;
     private isAttacking = false;
     private isWalking = false;
     private direction = Directions.DOWN;
@@ -32,7 +32,6 @@ class PlayerSprite extends BaseSprite{
 
     private initialiseControls(){
         this.initialiseAttack();
-        controller.moveSprite(this.sprite, this.speed, this.speed);
         this.initialiseMove();
     }
 
@@ -43,8 +42,6 @@ class PlayerSprite extends BaseSprite{
                 anim = this.attackAnimDict[this.direction];
                 let frameLen = 100;
                 let attackLen = anim.length;
-                console.log(this.direction);
-                console.log(anim.length);
                 animation.runImageAnimation(this.sprite, anim, frameLen, false);
                 this.isAttacking = true;
                 timer.after(frameLen * attackLen, function () { this.isAttacking = false })
@@ -52,7 +49,10 @@ class PlayerSprite extends BaseSprite{
         })
     }
 
+// TODO fix alignment of images when swinging
+
     private initialiseMove(){
+        controller.moveSprite(this.sprite, this.speed, this.speed);
         game.onUpdate(function(){
             this.getDirection();
             this.animateWalking();
@@ -60,19 +60,25 @@ class PlayerSprite extends BaseSprite{
     }
 
     private getDirection() {
-        if (controller.left.isPressed()) {
+        if (controller.left.isPressed() && this.direction != Directions.LEFT) {
             this.direction = Directions.LEFT;
+            this.isWalking = false;
         }
-        else if (controller.right.isPressed()) {
+        else if (controller.right.isPressed() && this.direction != Directions.RIGHT) {
             this.direction = Directions.RIGHT;
+            this.isWalking = false;
         }
-        else if (controller.down.isPressed()) {
+        else if (controller.down.isPressed() && this.direction != Directions.DOWN) {
             this.direction = Directions.DOWN;
+            this.isWalking = false;
         }
-        else if (controller.up.isPressed()) {
-            this.direction = Directions.UP;
+        else if (controller.up.isPressed() && this.direction != Directions.UP) {
+            this.direction = Directions.UP; 
+            this.isWalking = false;
         }
     }
+
+// TODO: can now be a spinning top with diagonal movement
 
     private animateWalking(){
         if (this.sprite.vx != 0 || this.sprite.vy != 0) {
@@ -84,8 +90,10 @@ class PlayerSprite extends BaseSprite{
             }
         }
         else {
-            animation.stopAnimation(animation.AnimationTypes.All, this.sprite);
             this.isWalking = false;
+            if (!this.isAttacking){
+                animation.stopAnimation(animation.AnimationTypes.All, this.sprite);
+            }
         }
     }
 }
