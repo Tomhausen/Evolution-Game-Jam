@@ -25,7 +25,7 @@ class PlayerSprite extends BaseSprite{
     }
     
     constructor(){
-        super(sprites.castle.heroWalkFront1, SpriteKind.Player);
+        super(assets.animation`heroWalkDown`[0], SpriteKind.Player);
         this.initialiseControls();
         this.sprite.setStayInScreen(true); // test code remove
     }
@@ -48,9 +48,7 @@ class PlayerSprite extends BaseSprite{
             }
         })
     }
-
-// TODO fix alignment of images when swinging
-
+    
     private initialiseMove(){
         controller.moveSprite(this.sprite, this.speed, this.speed);
         game.onUpdate(function(){
