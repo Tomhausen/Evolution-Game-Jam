@@ -4,6 +4,7 @@ class GameManager{
 
     constructor(){
         this.setUpSprites();
+        scene.setBackgroundColor(1)
     }
 
     private setUpSprites(){
