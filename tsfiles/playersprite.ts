@@ -8,7 +8,7 @@ enum Directions {
 class PlayerSprite extends BaseSprite{
 
     private speed = 75;
-    private isAttacking = false;
+    public isAttacking = false;
     private isWalking = false;
     private direction = Directions.DOWN;
     private attackAnimDict = { 
