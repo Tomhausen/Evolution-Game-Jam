@@ -44,7 +44,10 @@ class PlayerSprite extends BaseSprite{
                 let attackLen = anim.length;
                 animation.runImageAnimation(this.sprite, anim, frameLen, false);
                 this.isAttacking = true;
-                timer.after(frameLen * attackLen, function () { this.isAttacking = false })
+                timer.after(frameLen * attackLen, function () { 
+                    this.isAttacking = false;
+                    this.isWalking = false;
+                })
             }
         })
     }
