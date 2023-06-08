@@ -18,7 +18,8 @@
         "images.g.jres",
         "images.g.ts",
         "tsfiles/gamemanager.ts",
-        "tsfiles/enemysprite.ts"
+        "tsfiles/enemysprite.ts",
+        "tsfiles/enemy.ts"
     ],
     "testFiles": [
         "test.ts"
