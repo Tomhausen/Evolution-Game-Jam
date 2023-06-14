@@ -5,8 +5,9 @@ abstract class EnemySprite extends BaseSprite{
     public evolvesInto: EnemySprite;
     public maxHealth: number;
     private speed: number;
+    private anim: Image[]
 
-    public position(coordinate: Coordinate){
+    public setPosition(coordinate: Coordinate){
         this.sprite.setPosition(coordinate.x, coordinate.y);
     }
 

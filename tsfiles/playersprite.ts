@@ -11,6 +11,7 @@ class PlayerSprite extends BaseSprite{
     public isAttacking = false;
     private direction = Directions.DOWN;
     private currentAnim: Image[];
+    public invincibilityFrames = false;
     private attackAnimDict = { 
         0: assets.animation`heroUpAttack`,
         1: assets.animation`heroDownAttack`,
@@ -89,6 +90,13 @@ class PlayerSprite extends BaseSprite{
                 animation.stopAnimation(animation.AnimationTypes.All, this.sprite);
             }
         }
+    }
+
+    public takeDamage(enemy: EnemySprite) {
+        info.changeLifeBy(-1); // workout based on enemy
+        this.invincibilityFrames = true;
+        // knockback
+        this.invincibilityFrames = false;
     }
 
 }

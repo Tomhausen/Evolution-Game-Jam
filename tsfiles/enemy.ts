@@ -13,19 +13,24 @@ class Enemy{
     constructor(enemySprite: EnemySprite, coordinate: Coordinate){
         this.enemySprite = enemySprite;
         this.coordinate = coordinate;
+        this.enemySprite.setPosition(coordinate);
         this.level = this.enemySprite.level;
     }
 
-    private takeDamage(){
-        this.hitsTake += 1;
-        if (this.hitsTake < 1){
-            this.enemySprite.sprite.destroy();
-            return;
-        }
-        // knockback
+    private setupEvents() {
+        sprites.onOverlap()
     }
 
-    private position(){ // call this in on update
+
+
+    private takeDamage(){
+        this.hitsTake += 1;
+        if (this.hitsTake >= this.enemySprite.maxHealth){
+            this.enemySprite.sprite.destroy();
+        }
+    }
+
+    private getPosition(){ // call this in on update
         this.coordinate.x = this.enemySprite.sprite.x;
         this.coordinate.y = this.enemySprite.sprite.y;
     }
