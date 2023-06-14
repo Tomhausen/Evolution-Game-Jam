@@ -34,7 +34,7 @@ class Enemy{
         // need to know what we're evolving into
         let newEnemy = // evolves into func here
         this.enemySprite.sprite.destroy();
-        this.enemySprite = newEnemy;
+        // this.enemySprite = newEnemy;
 
     }
 

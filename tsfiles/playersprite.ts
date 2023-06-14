@@ -53,7 +53,7 @@ class PlayerSprite extends BaseSprite{
     }
     
     private initialiseMove(){
-        controller.moveSprite(this.sprite, this.speed, this.speed);
+        // controller.moveSprite(this.sprite, this.speed, this.speed);
         game.onUpdate(function(){
             this.getDirection();
             this.animateWalking();
@@ -61,22 +61,32 @@ class PlayerSprite extends BaseSprite{
     }
 
     private getDirection() {
-        if (controller.left.isPressed() && this.direction != Directions.LEFT) {
-            this.direction = Directions.LEFT;
-            this.isWalking = false;
-        }
-        else if (controller.right.isPressed() && this.direction != Directions.RIGHT) {
-            this.direction = Directions.RIGHT;
-            this.isWalking = false;
-        }
-        else if (controller.down.isPressed() && this.direction != Directions.DOWN) {
-            this.direction = Directions.DOWN;
-            this.isWalking = false;
-        }
-        else if (controller.up.isPressed() && this.direction != Directions.UP) {
-            this.direction = Directions.UP; 
-            this.isWalking = false;
-        }
+        // if (!this.isWalking) {
+            if (controller.left.isPressed() && this.direction != Directions.LEFT) {
+                this.direction = Directions.LEFT;
+                // this.isWalking = false;
+                this.sprite.vx = -this.speed;
+            }
+            else if (controller.right.isPressed() && this.direction != Directions.RIGHT) {
+                this.direction = Directions.RIGHT;
+                // this.isWalking = false;
+                this.sprite.vx = this.speed;
+            }
+            else if (controller.down.isPressed() && this.direction != Directions.DOWN) {
+                this.direction = Directions.DOWN;
+                // this.isWalking = false;
+                this.sprite.vy = this.speed;
+            }
+            else if (controller.up.isPressed() && this.direction != Directions.UP) {
+                this.direction = Directions.UP;
+                // this.isWalking = false;
+                this.sprite.vy = -this.speed;
+            }
+            else {
+                this.sprite.setVelocity(0, 0);
+                this.isWalking = false;
+            }
+        // }
     }
 
 // TODO: can now be a spinning top with diagonal movement
