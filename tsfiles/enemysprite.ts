@@ -1,11 +1,16 @@
 abstract class EnemySprite extends BaseSprite{
     
-    private level: number;
-    private countdownTime: number;
-    private maxHealth: number;
-    private hitsTaken = 0;
-    private speed: number;
-    private anim: Image[]
+    public level: number;
+    public countdownTime: number;
+    public maxHealth: number;
+    public hitsTaken = 0;
+    public speed: number;
+    public anim: Image[]
+
+    constructor(anim: Image, pos: Coordinate) {
+        super(anim, SpriteKind.Enemy);
+        this.setPosition(pos);
+    }
 
     public setPosition(coordinate: Coordinate){
         this.sprite.setPosition(coordinate.x, coordinate.y);
@@ -20,6 +25,7 @@ abstract class EnemySprite extends BaseSprite{
 
     public knockBack(player: Sprite){
         tilesAdvanced.followUsingPathfinding(this.sprite, player, 0);
+        animation.stopAnimation(animation.AnimationTypes.All, this.sprite);
         if (player.data.direction == Directions.UP) {
             this.sprite.vy = -50;
         }
@@ -36,9 +42,9 @@ abstract class EnemySprite extends BaseSprite{
         this.move()
     }
 
-    public move() {
-        
-    }
+    public abstract move(): any;
+
+    public abstract evolve(): any;
 
     // have evolves into function in each that makes a new sprite and returns it
 
