@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "the-code-zone-tiles-advanced": "github:tomhausen/the-code-zone-tiles-advanced#v0.0.2"
     },
     "files": [
         "main.blocks",

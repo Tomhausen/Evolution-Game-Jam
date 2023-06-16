@@ -92,10 +92,15 @@ class PlayerSprite extends BaseSprite{
         }
     }
 
-    public takeDamage(enemy: EnemySprite) {
+    public takeDamage() {
         info.changeLifeBy(-1); // workout based on enemy
         this.invincibilityFrames = true;
-        // knockback
+        for (let i = 0; i < 3; i++){
+            this.sprite.setFlag(SpriteFlag.Invisible, true);
+            pause(50);
+            this.sprite.setFlag(SpriteFlag.Invisible, false);
+            pause(50)
+        }
         this.invincibilityFrames = false;
     }
 

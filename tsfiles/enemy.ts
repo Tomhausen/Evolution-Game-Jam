@@ -6,28 +6,13 @@ interface Coordinate{
 class Enemy{
 
     public enemySprite: EnemySprite;
-    private level: number;
     public coordinate: Coordinate;
-    public hitsTake = 0;
+    public hitsTake: number;
 
-    constructor(enemySprite: EnemySprite, coordinate: Coordinate){
+    constructor(enemySprite: EnemySprite, coordinate: Coordinate) {
         this.enemySprite = enemySprite;
         this.coordinate = coordinate;
         this.enemySprite.setPosition(coordinate);
-        this.level = this.enemySprite.level;
-    }
-
-    private setupEvents() {
-        sprites.onOverlap()
-    }
-
-
-
-    private takeDamage(){
-        this.hitsTake += 1;
-        if (this.hitsTake >= this.enemySprite.maxHealth){
-            this.enemySprite.sprite.destroy();
-        }
     }
 
     private getPosition(){ // call this in on update

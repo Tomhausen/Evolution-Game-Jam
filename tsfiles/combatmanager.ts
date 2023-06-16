@@ -1,6 +1,8 @@
 class CombatManager{
 
-
+    constructor() {
+        this.setupEvents();
+    }
 
     private setupEvents() {
         sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (player, enemy) {
@@ -8,11 +10,12 @@ class CombatManager{
                 return;
             }
             if (player.data.isAttacking) {
-                // enemy knock back
-                // enemy take damage
+                enemy.data.takeDamage();
+                enemy.data.knockBack();
             }
             else {
-                // player take damage
+                player.data.takeDamage();
+                enemy.data.move();
             }
         })
     }
