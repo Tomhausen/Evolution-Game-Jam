@@ -10,6 +10,8 @@ class GameManager{
 
     private setUpSprites(){
         this.playerSprite = new PlayerSprite();
+        this.playerSprite.sprite.setPosition(20, 20);
+        let enemy = new BaseOne({ x: 140, y: 100 });
     }
 
 }

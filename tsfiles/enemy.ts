@@ -25,7 +25,7 @@ class Enemy{
         this.hitsTaken = this.enemySprite.hitsTaken; // store hit take
         this.enemySprite = this.enemySprite.evolve(); // make and set new sprite
         this.enemySprite.setHealth(this.hitsTaken); // pass on hits taken
-        this.setupEvolution(); // is there a better way than recursion?
+        this.setupEvolution(); // is there a better way than this?
     }
 
 }
