@@ -1,6 +1,7 @@
 abstract class BaseEnemy extends EnemySprite{
 
     anim = assets.animation`base enemy anim`;
+    maxLevel = 3;
 
     constructor(pos: Coordinate) {
         super(assets.image`placeholder`, pos);
@@ -26,12 +27,46 @@ class BaseOne extends BaseEnemy{
         super(pos);
     }
 
-    private setupEvolution() {
-        timer.after(this.countdownTime, this.evolve);
+    evolve() {
+        let newEnemy = new BaseTwo(this.getPosition());
+        this.sprite.destroy()
+        return newEnemy;
     }
 
-    evolve() {
-        // oh no, how does the container know its time to evolve    
+}
+
+class BaseTwo extends BaseEnemy {
+
+    level = 2;
+    countdownTime = 10000;
+    maxHealth = 10;
+    speed = 25;
+ 
+    constructor(pos: Coordinate) {
+        super(pos);
+    }
+
+    public evolve() {
+        let newEnemy = new BaseThree(this.getPosition());
+        this.sprite.destroy()
+        return newEnemy;
+    }
+
+}
+
+class BaseThree extends BaseEnemy {
+
+    level = 3;
+    countdownTime = 10000;
+    maxHealth = 15;
+    speed = 30;
+ 
+    constructor(pos: Coordinate) {
+        super(pos);
+    }
+
+    public evolve() {
+        // no more evolutions
     }
 
 }

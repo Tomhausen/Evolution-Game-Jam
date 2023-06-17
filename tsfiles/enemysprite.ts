@@ -1,6 +1,7 @@
 abstract class EnemySprite extends BaseSprite{
     
     public level: number;
+    public maxLevel: number;
     public countdownTime: number;
     public maxHealth: number;
     public hitsTaken = 0;
@@ -14,6 +15,18 @@ abstract class EnemySprite extends BaseSprite{
 
     public setPosition(coordinate: Coordinate){
         this.sprite.setPosition(coordinate.x, coordinate.y);
+    }
+
+    public getPosition() {
+        let coord: Coordinate;
+        coord.x = this.sprite.x
+        coord.y = this.sprite.y
+        return coord;
+    }
+
+    public setHealth(hitsTaken: number) {
+        this.hitsTaken = hitsTaken;
+        // could expand to set asset changes?
     }
 
     private takeDamage(){

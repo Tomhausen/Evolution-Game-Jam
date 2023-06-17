@@ -3,31 +3,29 @@ interface Coordinate{
     y: number
 }
 
+// This class exists to create persistence between enemies through evolution
+
 class Enemy{
 
     public enemySprite: EnemySprite;
-    public coordinate: Coordinate;
-    public hitsTake: number;
+    public hitsTaken: number;
 
     constructor(enemySprite: EnemySprite, coordinate: Coordinate) {
         this.enemySprite = enemySprite;
-        this.coordinate = coordinate;
         this.enemySprite.setPosition(coordinate);
     }
 
-    private getPosition(){ // call this in on update
-        this.coordinate.x = this.enemySprite.sprite.x;
-        this.coordinate.y = this.enemySprite.sprite.y;
+    private setupEvolution() {
+        if (this.enemySprite.level < this.enemySprite.maxLevel) {
+            timer.after(this.enemySprite.countdownTime, this.evolve());
+        }
     }
 
-    public evolve(){
-        // need to know what we're evolving into
-        let newEnemy = // evolves into func here
-        this.enemySprite.sprite.destroy();
-        // this.enemySprite = newEnemy;
-
+    private evolve(): any{
+        this.hitsTaken = this.enemySprite.hitsTaken; // store hit take
+        this.enemySprite = this.enemySprite.evolve(); // make and set new sprite
+        this.enemySprite.setHealth(this.hitsTaken); // pass on hits taken
+        this.setupEvolution(); // is there a better way than recursion?
     }
-
-    // in on update need to track the sprite pos and feed back into coord
 
 }
