@@ -7,11 +7,8 @@
         "the-code-zone-tiles-advanced": "github:tomhausen/the-code-zone-tiles-advanced#v0.0.2"
     },
     "files": [
-        "main.blocks",
         "main.ts",
-        "README.md",
         "assets.json",
-        "main.py",
         "tilemap.g.jres",
         "tilemap.g.ts",
         "tsfiles/basesprite.ts",
@@ -20,7 +17,9 @@
         "images.g.ts",
         "tsfiles/gamemanager.ts",
         "tsfiles/enemysprite.ts",
-        "tsfiles/enemy.ts"
+        "tsfiles/enemy.ts",
+        "tsfiles/baseenemy.ts",
+        "tsfiles/combatmanager.ts"
     ],
     "testFiles": [
         "test.ts"
