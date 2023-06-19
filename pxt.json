@@ -13,12 +13,15 @@
         "main.py",
         "tilemap.g.jres",
         "tilemap.g.ts",
-        "tsfiles/basesprite.ts",
-        "tsfiles/playersprite.ts",
         "images.g.jres",
         "images.g.ts",
-        "tsfiles/gamemanager.ts",
-        "tsfiles/enemysprite.ts"
+        "baseenemy.ts",
+        "basesprite.ts",
+        "combatmanager.ts",
+        "enemy.ts",
+        "enemysprite.ts",
+        "gamemanager.ts",
+        "playersprite.ts"
     ],
     "testFiles": [
         "test.ts"
