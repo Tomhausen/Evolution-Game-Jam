@@ -1,5 +1,5 @@
-abstract class EnemySprite extends BaseSprite{
-    
+abstract class EnemySprite extends BaseSprite {
+  
     public level: number;
     public maxLevel: number;
     public countdownTime: number;
@@ -13,7 +13,7 @@ abstract class EnemySprite extends BaseSprite{
         this.setPosition(pos);
     }
 
-    public setPosition(coordinate: Coordinate){
+    public setPosition(coordinate: Coordinate) {
         this.sprite.setPosition(coordinate.x, coordinate.y);
     }
 
@@ -29,14 +29,14 @@ abstract class EnemySprite extends BaseSprite{
         // could expand to set asset changes?
     }
 
-    private takeDamage(){
+    private takeDamage() {
         this.hitsTaken += 1;
-        if (this.hitsTaken >= this.maxHealth){
+        if (this.hitsTaken >= this.maxHealth) {
             this.sprite.destroy();
         }
     }
 
-    public knockBack(player: Sprite){
+    public knockBack(player: Sprite) {
         tilesAdvanced.followUsingPathfinding(this.sprite, player, 0);
         animation.stopAnimation(animation.AnimationTypes.All, this.sprite);
         if (player.data.direction == Directions.UP) {

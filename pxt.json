@@ -13,13 +13,14 @@
         "tilemap.g.ts",
         "images.g.jres",
         "images.g.ts",
-        "basesprite.ts",
-        "playersprite.ts",
-        "gamemanager.ts",
-        "enemysprite.ts",
-        "enemy.ts",
         "baseenemy.ts",
-        "combatmanager.ts"
+        "basesprite.ts",
+        "combatmanager.ts",
+        "enemy.ts",
+        "enemysprite.ts",
+        "gamemanager.ts",
+        "playersprite.ts"
+
     ],
     "testFiles": [
         "test.ts"

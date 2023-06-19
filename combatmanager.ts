@@ -1,4 +1,4 @@
-class CombatManager{
+class CombatManager {
 
     constructor() {
         this.setupEvents();

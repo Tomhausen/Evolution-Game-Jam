@@ -1,4 +1,5 @@
-abstract class BaseEnemy extends EnemySprite{
+abstract class BaseEnemy extends EnemySprite {
+
 
     anim = assets.animation`base enemy anim`;
     maxLevel = 3;
@@ -16,7 +17,8 @@ abstract class BaseEnemy extends EnemySprite{
 
 }
 
-class BaseOne extends BaseEnemy{
+
+class BaseOne extends BaseEnemy {
 
     level = 1;
     countdownTime = 10000;
@@ -41,7 +43,7 @@ class BaseTwo extends BaseEnemy {
     countdownTime = 10000;
     maxHealth = 10;
     speed = 25;
- 
+
     constructor(pos: Coordinate) {
         super(pos);
     }
@@ -60,7 +62,7 @@ class BaseThree extends BaseEnemy {
     countdownTime = 10000;
     maxHealth = 15;
     speed = 30;
- 
+
     constructor(pos: Coordinate) {
         super(pos);
     }
