@@ -1,5 +1,5 @@
 abstract class EnemySprite extends BaseSprite {
-
+  
     public level: number;
     public maxLevel: number;
     public countdownTime: number;

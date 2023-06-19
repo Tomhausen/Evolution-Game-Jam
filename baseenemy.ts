@@ -1,5 +1,6 @@
 abstract class BaseEnemy extends EnemySprite {
 
+
     anim = assets.animation`base enemy anim`;
     maxLevel = 3;
 
@@ -15,6 +16,7 @@ abstract class BaseEnemy extends EnemySprite {
     }
 
 }
+
 
 class BaseOne extends BaseEnemy {
 

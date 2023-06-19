@@ -3,14 +3,12 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "the-code-zone-tiles-advanced": "github:tomhausen/the-code-zone-tiles-advanced#v0.0.2"
     },
     "files": [
-        "main.blocks",
         "main.ts",
-        "README.md",
         "assets.json",
-        "main.py",
         "tilemap.g.jres",
         "tilemap.g.ts",
         "images.g.jres",
@@ -22,6 +20,7 @@
         "enemysprite.ts",
         "gamemanager.ts",
         "playersprite.ts"
+
     ],
     "testFiles": [
         "test.ts"
